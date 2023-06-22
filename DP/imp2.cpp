@@ -38,6 +38,21 @@ min possible number of drop operations.
 #include <bits/stdc++.h>
 using namespace std;
 
+vector<vector<int>> dp;
+int solve(int i, int prev, vector<int> &nums)
+{
+     if (i >= nums.size())
+          return 0;
+     if (dp[i][prev] != -1)
+          return dp[i][prev];
+     int maxi = solve(i + 1, prev, nums);
+     if (prev == nums.size() || nums[i] % nums[prev] == 0)
+     {
+          maxi = max(maxi, 1 + solve(i + 1, i, nums));
+     }
+     return dp[i][prev] = maxi;
+}
+
 int main()
 {
      int n;
