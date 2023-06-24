@@ -35,3 +35,39 @@ example :
 
 
 */
+
+#include <bits/stdc++.h>
+typedef long long int ll;
+using namespace std;
+
+// 0 means prev boy
+// 1 means prev girl
+// 2 means prev not exists
+
+// i%2 == 1 -> girl
+int mod = 1e9 + 7;
+
+int dp[(int)1e6 + 9][3];
+
+int solve(int i, int prev)
+{
+    if (i == 0)
+        return prev != 2;
+    if (dp[i][prev] != -1)
+        return dp[i][prev];
+    ll ways = solve(i - 1, prev) % mod;
+    if (i % 2 == 1 && (prev == 0 || prev == 2))
+        ways += solve(i - 1, 1) % mod;
+    if (i % 2 == 0 && (prev == 1 || prev == 2))
+        ways += solve(i - 1, 0) % mod;
+    return dp[i][prev] = ways % mod;
+}
+
+int main()
+{
+    memset(dp, -1, sizeof dp);
+    int n;
+    cin >> n;
+    cout << solve(n, 2) << endl;
+    return 0;
+}
