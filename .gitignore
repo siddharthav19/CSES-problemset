@@ -3,5 +3,3 @@ conn.cpp
 tester.cpp
 *.exe
 xr.cpp
-noter.txt
-*.txt

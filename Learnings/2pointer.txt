@@ -1,0 +1,4 @@
+++++++++++++++++++++++++++++++++++++++++
+** 1 type of problems are kind of optimisation of binary search on every start
+
+** you fix your one of the element (say A) and think of whether to consider any further elements as your second element so that whatever you want to accomplish will get accomplished
